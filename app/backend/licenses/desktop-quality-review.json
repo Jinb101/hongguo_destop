@@ -1,0 +1,16 @@
+{
+  "release": "1.0.2",
+  "review_date": "2026-09-23",
+  "base_manifest_sha256": "2728406b63678aced0e36a43c5a583e3c163dff18a17ad188a04bf09db1ffa26",
+  "candidate_manifest_before_review_sha256": "f16eb02193746632248bb5701d25350843612b267666593ef674f47fcc5950e5",
+  "unchanged_components_and_notices": 3994,
+  "changed_files": [
+    "offline_dl.py",
+    "server.py",
+    "desktop_quality.py",
+    "quality-patch.json"
+  ],
+  "basis": "Desktop metadata selection patch reviewed; all other reviewed runtime components and notices byte-identical",
+  "authorization": "User requested optimization followed by new-version publication on 2026-09-23",
+  "installation_acceptance_required": true
+}

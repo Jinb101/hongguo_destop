@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="tile" x1="150" y1="90" x2="880" y2="960" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ff6a4f"/>
+      <stop offset="0.36" stop-color="#e71c3b"/>
+      <stop offset="0.76" stop-color="#ab0c26"/>
+      <stop offset="1" stop-color="#6d041c"/>
+    </linearGradient>
+    <linearGradient id="sheen" x1="200" y1="40" x2="700" y2="520" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.2"/>
+      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0.05"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="512" cy="600" r="430" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffb27a" stop-opacity="0.4"/>
+      <stop offset="0.55" stop-color="#ff5b4a" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#ff3b3b" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="vignette" cx="512" cy="512" r="600" gradientUnits="userSpaceOnUse">
+      <stop offset="0.58" stop-color="#3d0010" stop-opacity="0"/>
+      <stop offset="1" stop-color="#3d0010" stop-opacity="0.42"/>
+    </radialGradient>
+    <radialGradient id="fruit" cx="400" cy="420" r="460" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffab84"/>
+      <stop offset="0.32" stop-color="#fd5c4e"/>
+      <stop offset="0.62" stop-color="#d51838"/>
+      <stop offset="0.85" stop-color="#a50d2a"/>
+      <stop offset="1" stop-color="#74051e"/>
+    </radialGradient>
+    <linearGradient id="rim" x1="300" y1="300" x2="780" y2="800" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffe6d2" stop-opacity="0.72"/>
+      <stop offset="0.42" stop-color="#ff9d84" stop-opacity="0.1"/>
+      <stop offset="1" stop-color="#4d0010" stop-opacity="0.42"/>
+    </linearGradient>
+    <linearGradient id="leaf" x1="560" y1="290" x2="750" y2="150" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#c3f78d"/>
+      <stop offset="0.5" stop-color="#66d678"/>
+      <stop offset="1" stop-color="#1d874a"/>
+    </linearGradient>
+    <linearGradient id="stem" x1="520" y1="210" x2="560" y2="350" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#cf9a5c"/>
+      <stop offset="0.55" stop-color="#8d5c2f"/>
+      <stop offset="1" stop-color="#5d381a"/>
+    </linearGradient>
+    <linearGradient id="play" x1="500" y1="470" x2="640" y2="660" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fffdf6"/>
+      <stop offset="0.6" stop-color="#fff0da"/>
+      <stop offset="1" stop-color="#ffdcb8"/>
+    </linearGradient>
+    <radialGradient id="hiSoft" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.42"/>
+      <stop offset="0.55" stop-color="#ffffff" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="bounce" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ffd0b0" stop-opacity="0.3"/>
+      <stop offset="1" stop-color="#ffd0b0" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="occlusion" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#4a0012" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="#4a0012" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="groundShadow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#4a0012" stop-opacity="0.46"/>
+      <stop offset="1" stop-color="#4a0012" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="fruitClip">
+      <path d="M500 340c-70-40-160-28-200 40-50 80-44 206 16 292 44 64 114 102 184 106 66 4 122-20 168-62 68-66 94-164 84-244-8-76-46-132-100-154-50-20-108-4-152 22z"/>
+    </clipPath>
+    <clipPath id="leafClip">
+      <path d="M552 238c48-50 116-84 192-94 4 62-28 124-90 154-48 22-86-4-102-60z"/>
+    </clipPath>
+  </defs>
+
+  <rect x="40" y="40" width="944" height="944" rx="228" fill="url(#tile)"/>
+  <rect x="40" y="40" width="944" height="944" rx="228" fill="url(#halo)"/>
+  <rect x="40" y="40" width="944" height="944" rx="228" fill="url(#sheen)"/>
+  <rect x="40" y="40" width="944" height="944" rx="228" fill="url(#vignette)"/>
+  <rect x="47" y="47" width="930" height="930" rx="221" fill="none" stroke="#ffffff" stroke-opacity="0.15" stroke-width="6"/>
+
+  <ellipse cx="512" cy="846" rx="330" ry="56" fill="url(#groundShadow)"/>
+
+  <path d="M536 340c-8-44-4-84 10-112" fill="none" stroke="url(#stem)" stroke-width="25" stroke-linecap="round"/>
+  <path d="M552 238c48-50 116-84 192-94 4 62-28 124-90 154-48 22-86-4-102-60z" fill="url(#leaf)"/>
+  <g clip-path="url(#leafClip)">
+    <path d="M556 246c50-22 102-48 152-70" fill="none" stroke="#175f36" stroke-opacity="0.28" stroke-width="6" stroke-linecap="round"/>
+    <path d="M608 230c12-18 18-36 20-54M650 208c9-17 14-34 16-51M690 186c7-12 11-26 12-40" fill="none" stroke="#175f36" stroke-opacity="0.18" stroke-width="4" stroke-linecap="round"/>
+  </g>
+
+  <path d="M500 340c-70-40-160-28-200 40-50 80-44 206 16 292 44 64 114 102 184 106 66 4 122-20 168-62 68-66 94-164 84-244-8-76-46-132-100-154-50-20-108-4-152 22z" fill="#5e0316" opacity="0.45" stroke="#5e0316" stroke-width="16"/>
+  <path d="M500 340c-70-40-160-28-200 40-50 80-44 206 16 292 44 64 114 102 184 106 66 4 122-20 168-62 68-66 94-164 84-244-8-76-46-132-100-154-50-20-108-4-152 22z" fill="url(#fruit)"/>
+  <g clip-path="url(#fruitClip)">
+    <ellipse cx="508" cy="800" rx="260" ry="120" fill="url(#occlusion)"/>
+    <ellipse cx="414" cy="452" rx="118" ry="186" fill="url(#hiSoft)" transform="rotate(-26 414 452)"/>
+    <ellipse cx="356" cy="392" rx="30" ry="64" fill="#ffffff" opacity="0.3" transform="rotate(-28 356 392)"/>
+    <ellipse cx="612" cy="700" rx="150" ry="72" fill="url(#bounce)" transform="rotate(-8 612 700)"/>
+    <ellipse cx="536" cy="336" rx="46" ry="14" fill="#7d0620" opacity="0.3"/>
+  </g>
+  <path d="M500 340c-70-40-160-28-200 40-50 80-44 206 16 292 44 64 114 102 184 106 66 4 122-20 168-62 68-66 94-164 84-244-8-76-46-132-100-154-50-20-108-4-152 22z" fill="none" stroke="url(#rim)" stroke-width="8" stroke-opacity="0.8"/>
+
+  <path d="M500 480 634 564 500 648z" fill="#6d0018" opacity="0.26" transform="translate(0 8)" stroke="#6d0018" stroke-width="50" stroke-linejoin="round"/>
+  <path d="M500 480 634 564 500 648z" fill="url(#play)" stroke="url(#play)" stroke-width="44" stroke-linejoin="round"/>
+  <path d="M524 514c20 2 42 14 58 26" fill="none" stroke="#ffffff" stroke-opacity="0.45" stroke-width="7" stroke-linecap="round"/>
+</svg>

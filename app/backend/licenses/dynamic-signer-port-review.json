@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "scope": "dynamic-owned-signer-runtime-byte-review-v1",
+  "baseManifestSha256": "4f9e085d3250504b26282fda961fb3e8dbba9f0f45d68f0cb3a24bcde7d74cc1",
+  "baseBootstrapSha256": "c8ace00c3b4a4116029b5f705c4439e5965fb9f755733206162efef0c6479189",
+  "bootstrapSha256": "d1b4ae3524bd9be28230d9c2426af99390b8af4e6b2dc4caf1e71370fd36d4c6",
+  "patchSourceCommit": "43c54a95bf123834168a699d1a6cbccddb0ee085",
+  "acceptanceProofs": {
+    "dynamic-signer-media-proof.json": "a8b7375cc84bca5eccb92fe0fb34455375327231c83a3ff89bc5781e2246fa7b",
+    "dynamic-signer-exit-proof.json": "0987f73ffaa74a2a73d538369abdf791ea09d8aa7230f2c9d46f197c9df8ec0b"
+  },
+  "nativeRunIds": [
+    "4792df152c5543bca18aab71a6c95fd2",
+    "486184bf9d734c5ab066531cc0fe52cc"
+  ],
+  "changedRuntimeFiles": [
+    "desktop_bootstrap.py"
+  ],
+  "unchangedBaseFiles": 4011,
+  "addedReview": "licenses/dynamic-signer-port-review.json",
+  "newDependencies": 0,
+  "noticesAndCorrespondingSourcesUnchanged": true,
+  "sourceArchiveSha256": "2702d6ae608379f4ebbdacc12e914b44bbb2e863b3ba2a3dfd153470221cfc74",
+  "sourceArchiveFiles": 26,
+  "historicalReviewsApplyToOriginalBytesOnly": true,
+  "acceptance": "Occupied 9099 with four native media modes, 401 auth rejection, native signer exit and cleanup",
+  "systemExclusionRangeReproduced": false,
+  "newWholePackageAccepted": false,
+  "publicUpdaterAccepted": false,
+  "publicationAuthorizedByThisRecord": false
+}

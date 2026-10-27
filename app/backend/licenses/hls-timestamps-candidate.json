@@ -1,0 +1,15 @@
+{
+  "scope": "internal-encoder-clock-only",
+  "baseManifestSha256": "7694618b38d884be8e5425aa3a7486fcffc9561e12e939537bbf3d10b456167a",
+  "baseEncoderSha256": "12b05fc392cc15e507819f3517b3bd47f3e48efbb5ffdeb96ad55d25597beecf",
+  "candidateEncoderSha256": "d3d0a85d554f8fc75be49bbde7dccdd0c7f3e74d2dfb6bc14120fa0c6e77c70b",
+  "sourceClock": "original.time_base",
+  "sourceClockAppliedTo": [
+    "video.codec_context.time_base",
+    "video.time_base"
+  ],
+  "videoDurations": "one packet lookahead using successive encoded DTS; no frame deletion",
+  "unchangedQuotaBytes": 536870912,
+  "installerAccepted": false,
+  "publicReleaseApproved": false
+}

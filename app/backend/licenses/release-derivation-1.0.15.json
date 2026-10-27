@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "target_release": "1.0.15",
+  "base_runtime_manifest_sha256": "a677aa26ac8878ed4d472f34c8fedee67d46e24ccbdaf4e221a6468a941f0f49",
+  "derivation": "Release-source URL update only; all HD playback code unchanged",
+  "changedFiles": [
+    "licenses/review.json",
+    "licenses/README.txt"
+  ],
+  "addedFiles": [
+    "licenses/release-derivation-1.0.15.json"
+  ],
+  "newDependencies": 0,
+  "qualityDowngradeAdded": false,
+  "sharedFilesAreImmutableHardlinks": true,
+  "sourceArchiveSha256": "2702d6ae608379f4ebbdacc12e914b44bbb2e863b3ba2a3dfd153470221cfc74",
+  "sourceArchiveUnchanged": true,
+  "completeInstallerAccepted": false
+}

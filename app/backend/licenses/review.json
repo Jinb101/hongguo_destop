@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "release": "1.0.0",
+  "ownerConfirmationDate": "2026-09-14",
+  "upstream": "zhangbaio/hongguo",
+  "sourceCommit": "5f8a58d10f48954bc9b6a58c9cd6418bf499feb9",
+  "basis": "user confirmed ownership and no authorization issue; exact binary provenance and notices collected",
+  "originalManifestSha256": "73945692f6c3bbdee9c75c7e2e895ee21d521176f57f0434e4e84003bf4d6e93",
+  "rustPackages": 558,
+  "npmPackages": 36,
+  "mediaSourceArchives": 12,
+  "openjdkSourceIncluded": false,
+  "correspondingSources": {
+    "distribution": "separate-release-attachment",
+    "url": "https://github.com/waligoraamodio288-rgb/hongguo-desktop-releases/releases/download/v1.0.19/hongguo-1.0.19-third-party-sources.zip",
+    "sha256": "726987bd16e16020be6f0915203f950e5b3dacf46f1652ab594cfa8eaffb5e59",
+    "files": 51
+  }
+}

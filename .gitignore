@@ -1,0 +1,32 @@
+# 依赖与工具链
+node_modules/
+pydeps/
+tools/node/
+tools/rust/
+
+# 构建产物
+app/frontend-src/dist/
+app/desktop/src-tauri/target/
+app/desktop/src-tauri/gen/
+*.exe
+*.msi
+*.nsis.zip
+
+# 体积参考数据（APK 解包、流量/资源抓包、逆向输出）
+apk/
+rea-out/
+app/backend/capture/
+
+# 运行期状态与验证截图
+runtime/
+shots/
+shots-new/
+.workbuddy/
+.zcode/
+
+# 系统与编辑器
+.DS_Store
+Thumbs.db
+*.log
+__pycache__/
+*.pyc

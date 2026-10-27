@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "release": "1.0.4",
+  "review_date": "2026-09-29",
+  "base_manifest_sha256": "4ad13ec9996531b8f25152e023000ff45fbf477e42fbb786d358e6bf5129381d",
+  "candidate_manifest_sha256": "00bce0078f373adb7a84228bf4ecde4930b6a49de8c1298d9b81019f822cb335",
+  "bootstrap_sha256": "fca00ff5153c76ecedd6aafdbfd8de9a584dca47869a4a42b8c5f1a446ed83a6",
+  "protocol": "HONGGUO_PORT_V1",
+  "unchanged_runtime_files": 4000,
+  "changed_runtime_files": [
+    "desktop_bootstrap.py"
+  ],
+  "added_runtime_metadata": [
+    "managed-endpoint-patch.json",
+    "licenses/managed-endpoint-review.json"
+  ],
+  "basis": "Exact reviewed components, notices and source links unchanged; tracked launcher change only; no new dependency",
+  "acceptance": "C2 component, occupied-port installer/media and native effective-CSP evidence recorded in MANAGED-BACKEND-ENDPOINT.md",
+  "installer_acceptance_required": true,
+  "publication_authorized_by_this_record": false
+}

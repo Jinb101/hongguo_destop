@@ -1,0 +1,20 @@
+{
+  "identifier": "default",
+  "description": "主窗口能力：只放行窗口控制与拖动，数据一律走 Rust 代理",
+  "windows": ["main"],
+  "permissions": [
+    "core:default",
+    "core:window:allow-start-dragging",
+    "core:window:allow-minimize",
+    "core:window:allow-maximize",
+    "core:window:allow-unmaximize",
+    "core:window:allow-toggle-maximize",
+    "core:window:allow-close",
+    "core:window:allow-is-maximized",
+    "core:window:allow-set-always-on-top",
+    "core:window:allow-set-focus",
+    "core:window:allow-show",
+    "core:window:allow-hide",
+    "core:webview:allow-set-webview-focus"
+  ]
+}

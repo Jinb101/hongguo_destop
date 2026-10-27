@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "version": "1.0.19",
+  "baseManifestSha256": "cfd0def1fe8dc1e5ad9e9f0522802732375efe5fdea06d9514cf73e925d30b00",
+  "newAccountFiles": [
+    "medusa_wire_tables.json",
+    "phone_account_device.py",
+    "phone_account_diagnostics.py",
+    "phone_account_flow.py",
+    "phone_account_host.py",
+    "phone_account_medusa.py",
+    "phone_account_medusa_cipher.py",
+    "phone_account_medusa_digest.py",
+    "phone_account_signing.py",
+    "phone_account_transport.py",
+    "protocol-integrity.json",
+    "THIRD_PARTY_NOTICES.md",
+    "vendor/LICENSE.ssovit",
+    "vendor/pkcs7_padding.py",
+    "vendor/TTEncrypt.py",
+    "vendor/XGorgon.py",
+    "vendor/XLadon.py"
+  ],
+  "newBinaryDependencies": 0,
+  "vendorLicense": "phone-account-protocol/vendor/LICENSE.ssovit",
+  "vendorProvenance": "phone-account-protocol/THIRD_PARTY_NOTICES.md",
+  "sourceArchiveSha256": "726987bd16e16020be6f0915203f950e5b3dacf46f1652ab594cfa8eaffb5e59",
+  "credentialsIncluded": false,
+  "competitorExecutableIncluded": false,
+  "humanAccountAcceptance": {
+    "at": "2026-10-22T22:44:26.390748+08:00",
+    "candidateSha256": "c84f0630b4af5f22fbccfef959cf0f7207e3f472c3a6a031a718efb57f69724e",
+    "authenticated": true,
+    "cloudCounts": [
+      20,
+      40
+    ],
+    "cloudComplete": true,
+    "phoneComparisonVerified": true,
+    "comparisonEvidence": "Direct user reply: 已登录，收藏与最近观看记录一致",
+    "scope": "read-only favorites and recent viewing; no claim of cloud writeback or durable login",
+    "observerSha256": "95cc35aea4a21dd5358ff51a36ec02b072b1dc224d05ea61136a7c1fa3bb3f10",
+    "handoffSha256": "fd36dff9e946eb9861959aba8983725649c5c9b37ee6b988616566cbdceb04af"
+  },
+  "installerAcceptance": "pending"
+}

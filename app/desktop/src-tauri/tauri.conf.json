@@ -1,0 +1,46 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "红果免费短剧",
+  "version": "1.1.0",
+  "identifier": "com.hongguo.desktop.rebuild",
+  "build": {
+    "beforeDevCommand": "npm run fe:dev",
+    "devUrl": "http://localhost:1420",
+    "beforeBuildCommand": "npm run fe:build",
+    "frontendDist": "../../frontend-src/dist"
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "红果免费短剧",
+        "width": 1280,
+        "height": 820,
+        "minWidth": 1040,
+        "minHeight": 660,
+        "decorations": false,
+        "center": true,
+        "backgroundColor": "#0d0d12"
+      }
+    ],
+    "security": {
+      "csp": "default-src 'self'; img-src 'self' data: blob: https:; media-src 'self' http://127.0.0.1:*; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self' ipc: http://ipc.localhost http://127.0.0.1:* ws://localhost:1420 http://localhost:1420; font-src 'self' data:"
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": ["nsis"],
+    "icon": ["icons/icon.ico", "icons/32x32.png", "icons/128x128.png", "icons/icon.png"],
+    "category": "Entertainment",
+    "shortDescription": "红果免费短剧 桌面端",
+    "longDescription": "红果免费短剧 Windows 桌面端自建版本：找剧、追剧、收藏与历史进度本地保存。",
+    "windows": {
+      "webviewInstallMode": { "type": "embedBootstrapper" },
+      "nsis": {
+        "installerIcon": "icons/icon.ico",
+        "uninstallerIcon": "icons/icon.ico",
+        "headerImage": "icons/installer-header.bmp",
+        "sidebarImage": "icons/installer-sidebar.bmp"
+      }
+    }
+  }
+}

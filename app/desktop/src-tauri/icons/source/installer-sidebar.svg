@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="164" height="314" viewBox="0 0 164 314">
+  <defs>
+    <linearGradient id="s-wash" x1="0" y1="0" x2="0" y2="314" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff4ea"/>
+      <stop offset="0.55" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#fdf6ee"/>
+    </linearGradient>
+    <radialGradient id="s-fruit" cx="22" cy="22" r="30" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ff8a64"/>
+      <stop offset="0.5" stop-color="#f43a41"/>
+      <stop offset="1" stop-color="#a90d29"/>
+    </radialGradient>
+    <linearGradient id="s-leaf" x1="36" y1="16" x2="50" y2="6" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#96e880"/>
+      <stop offset="1" stop-color="#2b8f4e"/>
+    </linearGradient>
+  </defs>
+  <rect width="164" height="314" fill="url(#s-wash)"/>
+  <rect x="163" y="0" width="1" height="314" fill="#f0e2d6"/>
+  <g transform="translate(38 52) scale(1.4)">
+    <path d="M34 17c-1-5 0-8 2-10" fill="none" stroke="#8d5c2f" stroke-width="2.4" stroke-linecap="round"/>
+    <path d="M36 18c4-6 11-10 19-12 1 7-3 14-10 17-4 2-9 0-9-5z" fill="url(#s-leaf)"/>
+    <path d="M32 16c-5-3-12-1-15 5-4 7-2 17 5 23 4 3 9 4 13 2 7-4 11-11 10-19-1-7-7-12-13-11z" fill="url(#s-fruit)"/>
+    <path d="M31 27 41 34 31 41z" fill="#fff8ec" stroke="#fff8ec" stroke-width="3.4" stroke-linejoin="round"/>
+  </g>
+  <text x="82" y="178" text-anchor="middle" font-family="'Microsoft YaHei','Segoe UI',sans-serif" font-size="17" font-weight="700" fill="#3a2318">红果免费短剧</text>
+  <text x="82" y="198" text-anchor="middle" font-family="'Microsoft YaHei','Segoe UI',sans-serif" font-size="10" fill="#9b7f6a" letter-spacing="1">找剧 · 追剧 · 收藏</text>
+  <rect x="58" y="216" width="48" height="2" rx="1" fill="#ecd8c6"/>
+  <text x="82" y="240" text-anchor="middle" font-family="'Microsoft YaHei','Segoe UI',sans-serif" font-size="9" fill="#b0998a">玻璃 / 羊皮卷双主题</text>
+  <text x="82" y="256" text-anchor="middle" font-family="'Microsoft YaHei','Segoe UI',sans-serif" font-size="9" fill="#b0998a">进度与收藏保存在本机</text>
+  <circle cx="82" cy="288" r="3" fill="#e2403f"/>
+  <text x="82" y="304" text-anchor="middle" font-family="'Microsoft YaHei','Segoe UI',sans-serif" font-size="8" fill="#c2a894">桌面版</text>
+</svg>

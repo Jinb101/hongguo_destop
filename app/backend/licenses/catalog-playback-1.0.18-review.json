@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "baseManifestSha256": "3c9333e6d3f88de3e92ac4aa1f8eeb68dde27a1f2301e5740c5eb499c3b90b2e",
+  "release": "1.0.18",
+  "changedRuntimeCode": [
+    "desktop_public_player.py"
+  ],
+  "newDependencies": 0,
+  "competitorCodeIncluded": false,
+  "sourceArchiveSha256": "403335f0bf5299b4bc654d084f2537f06a10e863affa8b0c9b63ef134fdd8aee",
+  "installerAcceptance": "pending",
+  "published": false
+}

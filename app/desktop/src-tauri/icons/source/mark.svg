@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <radialGradient id="m-fruit" cx="24" cy="26" r="30" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ff8a64"/>
+      <stop offset="0.5" stop-color="#f43a41"/>
+      <stop offset="1" stop-color="#a90d29"/>
+    </radialGradient>
+    <linearGradient id="m-leaf" x1="38" y1="20" x2="54" y2="8" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#96e880"/>
+      <stop offset="1" stop-color="#2b8f4e"/>
+    </linearGradient>
+  </defs>
+  <path d="M34 17c-1-5 0-8 2-10" fill="none" stroke="#8d5c2f" stroke-width="2.4" stroke-linecap="round"/>
+  <path d="M36 18c4-6 11-10 19-12 1 7-3 14-10 17-4 2-9 0-9-5z" fill="url(#m-leaf)"/>
+  <path d="M32 16c-5-3-12-1-15 5-4 7-2 17 5 23 4 3 9 4 13 2 7-4 11-11 10-19-1-7-7-12-13-11z" fill="url(#m-fruit)"/>
+  <path d="M31 27 41 34 31 41z" fill="#fff8ec" stroke="#fff8ec" stroke-width="3.4" stroke-linejoin="round"/>
+</svg>

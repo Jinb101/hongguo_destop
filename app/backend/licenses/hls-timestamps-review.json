@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "release": "1.0.8",
+  "baseManifestSha256": "7694618b38d884be8e5425aa3a7486fcffc9561e12e939537bbf3d10b456167a",
+  "candidateManifestSha256": "eeadf860488202024465776310870ab1656fe033bb128061b4a8da138c369206",
+  "encoderSha256": "d3d0a85d554f8fc75be49bbde7dccdd0c7f3e74d2dfb6bc14120fa0c6e77c70b",
+  "changedCandidateFiles": [
+    "licenses/review.json",
+    "licenses/README.txt"
+  ],
+  "addedReview": "licenses/hls-timestamps-review.json",
+  "existingDependencyFilesUnchanged": 4007,
+  "componentEvidence": [
+    {
+      "case": "5d939215c649412fb54d1d21df57696c",
+      "resultSha256": "cb9ff68a69fc2ec8eb6d54445f66eb391a085faea6986ba162fdca436e459b6c",
+      "frames": 576,
+      "aacPackets": 1128,
+      "relativeTimingMaximumErrorSeconds": 0
+    },
+    {
+      "case": "e0ad6e316c8347689cdd69b68667cdeb",
+      "resultSha256": "fb3b9be714b7ef2dae3785f12cb43727ba1d42f261869f13944fdc73daf45961",
+      "frames": 27360,
+      "aacPackets": 53580,
+      "relativeTimingMaximumErrorSeconds": 0
+    }
+  ],
+  "sourceArchiveSha256": "2702d6ae608379f4ebbdacc12e914b44bbb2e863b3ba2a3dfd153470221cfc74",
+  "sourceArchiveFiles": 26,
+  "sourceUrl": "https://github.com/waligoraamodio288-rgb/hongguo-desktop-releases/releases/download/v1.0.8/hongguo-1.0.8-third-party-sources.zip",
+  "basis": "Pinned encoder recipe and exact timing evidence; prior dependencies and corresponding-source archive preserved",
+  "nativeFullPackageAcceptanceRequired": true,
+  "realReporterRootCauseConfirmed": false,
+  "installerAccepted": false,
+  "publicationAuthorizedByThisRecord": false
+}

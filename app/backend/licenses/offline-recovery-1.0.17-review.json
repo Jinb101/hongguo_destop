@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "baseManifestSha256": "0ddcb6e16de22e8e874d108050cd27faad161a1cc3b1a32992aa4251028e0a7a",
+  "release": "1.0.17",
+  "changedRuntimeCode": [
+    "desktop_resource.py",
+    "desktop_offline.py",
+    "desktop_bootstrap.py",
+    "desktop_hls_service.py"
+  ],
+  "newDependencies": 0,
+  "competitorCodeIncluded": false,
+  "sourceArchiveSha256": "e6737dd64fe0b9a94aa02e28896c19413ed316e1be32c11fd4e8c042f6bd3f63",
+  "nativeFeatureAcceptance": "offline-feature-acceptance.json",
+  "releaseInstallerAcceptance": false,
+  "published": false,
+  "scope": "Same tested code and dependency bytes; corresponding modified sources attached; distribution metadata only."
+}

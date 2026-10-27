@@ -1,0 +1,21 @@
+{
+  "scope": "desktop-single-video-api-compatibility",
+  "baseManifestSha256": "999f1c3befeddd07d8b5f531ac19eda87514124bbe507c22f1207ecd8ed6b50a",
+  "changedFiles": [
+    "offline_dl.py"
+  ],
+  "addedFiles": [
+    "desktop_video_model.py",
+    "licenses/desktop-video-model-review.json"
+  ],
+  "patchSha256": "ed2cd8100c78727bc0723b587e49c0c3bde4bb4a6e95973e9e8575f6ca78efc7",
+  "sourceAndHlsProofSha256": "7d22add946fbbb038c1c4cd7b5a894b7f3fc463ee7bdc6dff51ce5ab673c92f4",
+  "newDependencies": 0,
+  "authenticationUnchanged": true,
+  "identityRotationAdded": false,
+  "transportTlsUnchanged": true,
+  "originalRuntimeUnmodified": true,
+  "sharedFilesAreImmutableHardlinks": true,
+  "noticesAndCorrespondingSourcesUnchanged": true,
+  "completeInstallerAccepted": false
+}

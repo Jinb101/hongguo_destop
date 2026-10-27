@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "release": "1.0.5",
+  "review_date": "2026-09-29",
+  "base_manifest_sha256": "a51961c6eb4672f40fda5a72b9efe470bbad27a19a43cb0861267251f70fb324",
+  "candidate_manifest_sha256": "0098d16c5a73821d24fc3b9c8b0de90b9887899bc4510368efecc2db52376585",
+  "changed_runtime_files": [
+    "desktop_hls.py",
+    "desktop_hls_service.py"
+  ],
+  "added_runtime_files": [
+    "desktop_hls_budget.py",
+    "hls-budget-patch.json",
+    "licenses/hls-readiness-review.json"
+  ],
+  "encoder_sha256": "12b05fc392cc15e507819f3517b3bd47f3e48efbb5ffdeb96ad55d25597beecf",
+  "encoder_preset": "superfast",
+  "unchanged_base_files": 3999,
+  "notice_changes": [
+    "licenses/review.json",
+    "licenses/README.txt"
+  ],
+  "source_archive_sha256": "2702d6ae608379f4ebbdacc12e914b44bbb2e863b3ba2a3dfd153470221cfc74",
+  "source_archive_files": 26,
+  "source_url": "https://github.com/waligoraamodio288-rgb/hongguo-desktop-releases/releases/download/v1.0.5/hongguo-1.0.5-third-party-sources.zip",
+  "visual_evidence_sha256": "8091e997600490dc4b051573b87edb6e23756245b142f640128f3c518d44ed4e",
+  "quality_evidence_sha256": "616e56ba7548f7fe87d5a099bc282d4785c77a4985fbcb288f7f496bbf5adcdc",
+  "budget_evidence_sha256": "458df735f25dc7f181ebb60a4f5562739735d80c15397e9087abc45c1b6ebb6f",
+  "basis": "Exact reviewed dependencies unchanged; two tracked modules plus one helper and metadata; source archive bytes unchanged; versioned source links updated",
+  "visual_scope": "Limited licensed320x180 and generated1080p samples; fine texture can still degrade under VBV; no unchanged-quality claim",
+  "new_preset_native_acceptance_required": true,
+  "exact_installer_upgrade_acceptance_required": true,
+  "publication_authorized_by_this_record": false,
+  "unchanged_before_versioned_notice_edits": 4001
+}

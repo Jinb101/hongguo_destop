@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "scope": "owned-signer-runtime-byte-review-v1",
+  "baseManifestSha256": "5a98a89519a809feb1319a329453db07668e009c76a3f114b59518f6142c03c7",
+  "baseBootstrapSha256": "fca00ff5153c76ecedd6aafdbfd8de9a584dca47869a4a42b8c5f1a446ed83a6",
+  "bootstrapSha256": "c8ace00c3b4a4116029b5f705c4439e5965fb9f755733206162efef0c6479189",
+  "patchSourceCommit": "55eaa9e85a3b8aa6ddbf09e10e98fd33b6a4e3ca",
+  "nativeEvidenceSha256": "301b823567dea2b07cadba56374e5aa7c3ff3687003c9eb41c45479d4cd8b6c0",
+  "nativeRunId": "44c75cfed98e48a9b2e0eae8baa9551f",
+  "changedRuntimeFiles": [
+    "desktop_bootstrap.py"
+  ],
+  "unchangedBaseFiles": 4010,
+  "addedReview": "licenses/signer-lifetime-review.json",
+  "newDependencies": 0,
+  "noticesAndCorrespondingSourcesUnchanged": true,
+  "sourceArchiveSha256": "2702d6ae608379f4ebbdacc12e914b44bbb2e863b3ba2a3dfd153470221cfc74",
+  "sourceArchiveFiles": 26,
+  "historicalReviewsApplyToOriginalBytesOnly": true,
+  "acceptance": "Owned Java exit, API shutdown, manual UI refresh, normal app exit; isolated overlay only",
+  "newWholePackageAccepted": false,
+  "latestApplicationIntegrated": false,
+  "busyRequestDrainAccepted": false,
+  "userIssueRootCauseVerified": false,
+  "publicationAuthorizedByThisRecord": false
+}

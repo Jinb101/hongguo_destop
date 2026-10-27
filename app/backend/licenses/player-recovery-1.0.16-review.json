@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "baseManifestSha256": "ea2b748241f75f782639267d9e9cdd016b06168c5fecae8454c142e15b488b8e",
+  "changedFiles": [
+    "desktop_public_player.py"
+  ],
+  "addedFiles": [
+    "licenses/player-recovery-1.0.16-review.json"
+  ],
+  "newDependencies": 0,
+  "immutableHardlinks": true,
+  "scope": "At most three identical requests for an empty HTTP 200, delays 5 and 12 seconds. No retry of rejection, business, nonempty malformed or transport errors.",
+  "identityRotation": false,
+  "credentialChanges": false,
+  "verified": {
+    "contractTests": 11,
+    "realEpisode": 4,
+    "emptyFirstResponse": true,
+    "secondResponseBusinessCode": 0,
+    "decodedVideo": true,
+    "episodeReturnAndHistoryResume": true
+  },
+  "installerAccepted": false,
+  "published": false
+}

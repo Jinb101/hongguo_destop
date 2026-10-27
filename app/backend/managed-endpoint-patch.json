@@ -1,0 +1,9 @@
+{
+  "base_manifest_sha256": "4ad13ec9996531b8f25152e023000ff45fbf477e42fbb786d358e6bf5129381d",
+  "base_bootstrap_sha256": "a1dcd37bc4c4e5969227ffa60ceba97815e3d9f421cc1dd1ddb97032c4c1383f",
+  "bootstrap_sha256": "fca00ff5153c76ecedd6aafdbfd8de9a584dca47869a4a42b8c5f1a446ed83a6",
+  "protocol": "HONGGUO_PORT_V1",
+  "scope": "Owned loopback API socket and private parent control pipe only; signer remains 9099",
+  "unchanged_files": 4000,
+  "public_release_review_required": true
+}

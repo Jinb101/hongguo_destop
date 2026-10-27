@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "scope": "backend-current-failure-runtime-byte-review-v1",
+  "baseManifestSha256": "4b064767f9ec2ee2665cd67f90618059b5df56a8a6d3c0bb929c798e4e07c872",
+  "baseBootstrapSha256": "d1b4ae3524bd9be28230d9c2426af99390b8af4e6b2dc4caf1e71370fd36d4c6",
+  "bootstrapSha256": "a476ba2969e773373af8df88853982bcded7f48a4edc82444fae4e2f7b6e5e02",
+  "evidenceSha256": {
+    "backend-current-failure-native-proof.json": "dabe793dde9d92f70a10e05c1fb74f97fee0f957bfd8873448b38dab164f32d7",
+    "backend-current-failure-healthy-proof.json": "f6b3b70f4ec6f4fcb41fc961fb1e0671bd99ead1cc5ec9324f8e66cd1a3b3eb2"
+  },
+  "changedRuntimeFiles": [
+    "desktop_bootstrap.py"
+  ],
+  "unchangedBaseFiles": 4015,
+  "addedReview": "licenses/backend-diagnostic-review.json",
+  "newDependencies": 0,
+  "noticesAndCorrespondingSourcesUnchanged": true,
+  "sourceArchiveSha256": "2702d6ae608379f4ebbdacc12e914b44bbb2e863b3ba2a3dfd153470221cfc74",
+  "sourceArchiveFiles": 26,
+  "historicalReviewsApplyToOriginalBytesOnly": true,
+  "nativeControlledSignerExitAccepted": true,
+  "fullRuntimeHealthyLifecycleAccepted": true,
+  "invalidJvmNativeCaseAccepted": false,
+  "invalidJvmNativeCaseRootCauseKnown": false,
+  "newWholePackageAccepted": false,
+  "userIssueRootCauseVerified": false,
+  "publicationAuthorizedByThisRecord": false
+}

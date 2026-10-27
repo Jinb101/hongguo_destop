@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "target_release": "1.0.7",
+  "derivation": "versioned source reference over an unchanged reviewed 1.0.6 runtime",
+  "base_runtime_manifest_sha256": "c230eb30f3da68f24a00aee62a9ba32a1bab51bd37a93042dc56dc404b1bc7d2",
+  "source_archive_sha256": "2702d6ae608379f4ebbdacc12e914b44bbb2e863b3ba2a3dfd153470221cfc74",
+  "source_archive_bytes": 160173719,
+  "source_archive_members_verified": 26,
+  "old_source_url": "https://github.com/waligoraamodio288-rgb/hongguo-desktop-releases/releases/download/v1.0.6/hongguo-1.0.6-third-party-sources.zip",
+  "new_source_url": "https://github.com/waligoraamodio288-rgb/hongguo-desktop-releases/releases/download/v1.0.7/hongguo-1.0.7-third-party-sources.zip",
+  "unchanged_runtime_entries": 4005,
+  "changed_runtime_entries": [
+    "licenses/README.txt",
+    "licenses/review.json"
+  ],
+  "added_runtime_entry": "licenses/release-derivation-1.0.7.json",
+  "historical_reviews_preserved": [
+    "licenses/review.json:release=1.0.0",
+    "licenses/desktop-quality-review.json:release=1.0.2"
+  ],
+  "new_installer_build_and_acceptance_required": true
+}

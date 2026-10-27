@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "target_release": "1.0.14",
+  "base_runtime_manifest_sha256": "1406461e4837b08d0c62c3d4adbfc594a4eac6342ee6f59e04e941956079a01a",
+  "derivation": "Complete anonymous player profile and tolerant video model parser",
+  "native1080ProofSha256": "34e5f16608e1699afe04f03b85cbbd58533eca3f35ef7b0290b3e634ed5301cd",
+  "native1080Cases": 4,
+  "newDependencies": 0,
+  "thirdPartyCryptographicSignerAdded": false,
+  "qualityDowngradeAdded": false,
+  "identityRotationAdded": false,
+  "customAccountConfigurationPreserved": true,
+  "sharedFilesAreImmutableHardlinks": true,
+  "sourceArchiveSha256": "2702d6ae608379f4ebbdacc12e914b44bbb2e863b3ba2a3dfd153470221cfc74",
+  "sourceArchiveUnchanged": true,
+  "completeInstallerAccepted": false,
+  "changedFiles": [
+    "desktop_bootstrap.py",
+    "desktop_video_model.py",
+    "licenses/review.json",
+    "licenses/README.txt"
+  ],
+  "addedFiles": [
+    "desktop_public_player.py",
+    "licenses/release-derivation-1.0.14.json"
+  ]
+}

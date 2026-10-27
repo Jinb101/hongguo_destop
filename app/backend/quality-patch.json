@@ -1,0 +1,17 @@
+{
+  "policy": "desktop-resolution-v1",
+  "base_source_commit": "5f8a58d10f48954bc9b6a58c9cd6418bf499feb9",
+  "base_manifest_sha256": "2728406b63678aced0e36a43c5a583e3c163dff18a17ad188a04bf09db1ffa26",
+  "inputs": {
+    "offline_dl.py": "3812e56949301f0f4173517cbfeeed10d25907a9e9759e9a95ebe03c1d57f269",
+    "server.py": "938d876ee1e41d05a5535c05c3022a1a03946b643ba55ea4ff5fccd73aac7448"
+  },
+  "outputs": {
+    "offline_dl.py": "1b3fbe10d5b1605575b43bda3de72431f160b1c2fa4ffd17954dd920aca2fa4d",
+    "server.py": "211ee4c2dc7ee6097630bdf7ba94f290c675ea94429671df2a1f59d6422217b4",
+    "desktop_quality.py": "81de27e8065b477446af9205a7f57ce701d45acde4956fc813949f6448668450"
+  },
+  "scope": "desktop HLS source selection only; legacy best/explicit selection unchanged",
+  "network_requests": 0,
+  "release_review_required": true
+}

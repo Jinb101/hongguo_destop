@@ -1,0 +1,16 @@
+{
+  "base_manifest_sha256": "a51961c6eb4672f40fda5a72b9efe470bbad27a19a43cb0861267251f70fb324",
+  "base_files": {
+    "desktop_hls.py": "2b966e29aa0bbb71d94bd2d6915569781bc7408abe0bc2d3d5094a07927ef2cf",
+    "desktop_hls_service.py": "44d2cc3bb5a186ffa477c7124921b6d5474a2258df5cf571107a82d46b979f0d"
+  },
+  "changed_files": [
+    "desktop_hls.py",
+    "desktop_hls_service.py"
+  ],
+  "added_helper": "desktop_hls_budget.py",
+  "default_max_output_bytes": 536870912,
+  "encoder_preset": "superfast",
+  "scope": "superfast CRF20 with duration-aware VBV, fixed failure categories and explicit playlist readiness; no source loader change",
+  "public_release_review_required": true
+}

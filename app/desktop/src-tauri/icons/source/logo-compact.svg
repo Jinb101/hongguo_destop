@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="tile" x1="120" y1="60" x2="920" y2="980" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ff5a44"/>
+      <stop offset="0.5" stop-color="#d81533"/>
+      <stop offset="1" stop-color="#89071f"/>
+    </linearGradient>
+    <radialGradient id="fruit" cx="400" cy="430" r="460" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ff8a62"/>
+      <stop offset="0.45" stop-color="#f43a41"/>
+      <stop offset="0.82" stop-color="#b80f2c"/>
+      <stop offset="1" stop-color="#8a0720"/>
+    </radialGradient>
+  </defs>
+
+  <rect x="40" y="40" width="944" height="944" rx="232" fill="url(#tile)"/>
+  <rect x="48" y="48" width="928" height="928" rx="224" fill="none" stroke="#ffffff" stroke-opacity="0.18" stroke-width="8"/>
+
+  <path d="M546 340c-10-46-6-88 8-116" fill="none" stroke="#8d5c2f" stroke-width="34" stroke-linecap="round"/>
+  <path d="M560 236c54-56 132-86 206-92 2 70-36 132-106 158-52 18-88-8-100-66z" fill="#43bd66"/>
+
+  <path d="M500 340c-70-40-160-28-200 40-50 80-44 206 16 292 44 64 114 102 184 106 66 4 122-20 168-62 68-66 94-164 84-244-8-76-46-132-100-154-50-20-108-4-152 22z" fill="#6a0418" opacity="0.6" stroke="#6a0418" stroke-width="28"/>
+  <path d="M500 340c-70-40-160-28-200 40-50 80-44 206 16 292 44 64 114 102 184 106 66 4 122-20 168-62 68-66 94-164 84-244-8-76-46-132-100-154-50-20-108-4-152 22z" fill="url(#fruit)"/>
+
+  <path d="M488 452 664 556 488 660z" fill="#7a0019" opacity="0.3" transform="translate(0 10)" stroke="#7a0019" stroke-width="66" stroke-linejoin="round"/>
+  <path d="M488 452 664 556 488 660z" fill="#fff7ea" stroke="#fff7ea" stroke-width="58" stroke-linejoin="round"/>
+</svg>
