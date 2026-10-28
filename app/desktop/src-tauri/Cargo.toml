@@ -4,6 +4,9 @@ version = "1.1.0"
 description = "红果免费短剧 桌面端（自建 Tauri 壳）"
 edition = "2021"
 
+[features]
+custom-protocol = ["tauri/custom-protocol"]
+
 [build-dependencies]
 tauri-build = { version = "2", features = [] }
 

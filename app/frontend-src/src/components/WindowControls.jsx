@@ -1,18 +1,23 @@
 import { useEffect, useState } from 'react'
 import { isTauri } from '../lib/ipc.js'
+import { isMacPlatform } from '../lib/window-prefs.js'
 
 /**
- * macOS 交通灯式窗口按钮。
+ * macOS 交通灯式窗口按钮（仅 Windows 需要）。
  *
- * 主窗口是 decorations:false（无边框），最小化/最大化/关闭必须由前端提供，
+ * Windows 侧主窗口是 decorations:false（无边框），最小化/最大化/关闭必须由前端提供，
  * 否则窗口关不掉。按钮默认只显示颜色，悬停整组时浮出符号 —— 与 macOS 一致。
- * 浏览器调试环境下不渲染。
+ *
+ * macOS 用原生装饰（titleBarStyle: Overlay）：交通灯和窗口拖动都归系统管，
+ * 这里再画一套会和原生按钮重叠，所以直接不渲染。
+ * 浏览器调试环境下同样不渲染。
  */
 export default function WindowControls() {
   const [maximized, setMaximized] = useState(false)
+  const active = isTauri() && !isMacPlatform()
 
   useEffect(() => {
-    if (!isTauri()) return undefined
+    if (!active) return undefined
     let disposed = false
     let unlisten = null
 
@@ -38,9 +43,9 @@ export default function WindowControls() {
       disposed = true
       unlisten?.()
     }
-  }, [])
+  }, [active])
 
-  if (!isTauri()) return null
+  if (!active) return null
 
   const act = (method) => () => {
     import('@tauri-apps/api/window')

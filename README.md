@@ -63,6 +63,43 @@ npm run build   # dist/
 npm test        # 17 项回归测试
 ```
 
+### macOS
+
+```bash
+cd app/frontend-src && npm install
+cd ../desktop && npm install
+
+npm run dev                  # tauri dev：起 vite + 桌面壳
+cargo build --manifest-path src-tauri/Cargo.toml --features custom-protocol
+                             # 内嵌前端资源（等价于 tauri build 的资源路径，不打包安装包）
+npm test --prefix ../frontend-src   # vitest 回归
+```
+
+平台差异（已适配）：
+
+- **窗口装饰**：macOS 用原生装饰（`tauri.macos.conf.json` → `titleBarStyle: Overlay`），
+  交通灯、拖动、最小化、关闭、全屏都交给系统；Windows 保持 `decorations:false` +
+  自绘交通灯（[WindowControls.jsx](app/frontend-src/src/components/WindowControls.jsx) 在 macOS 不渲染）。
+- **原生菜单**：无边框/Overlay 窗口没有系统菜单栏，[main.rs](app/desktop/src-tauri/src/main.rs)
+  在 macOS 装了「应用 / 编辑 / 窗口」三组菜单（Cmd+Q、复制粘贴、最小化）。
+- **签名服务**：[desktop_bootstrap.py](app/backend/desktop_bootstrap.py) 已按平台定位 JRE
+  （`jre/Contents/Home/bin/java` → `JAVA_HOME` → PATH）并用 `lsof -F` 校验监听端口。
+  `unidbg-sign.jar` 不在本仓库，需从原安装目录取回放到 `sign/`。
+- **账号设备状态**：Windows 走 DPAPI；macOS 无等价 API，这层保持「不支持」，
+  不会降级成明文落盘（`phone_account_device.dpapi` 明确抛错）。
+- **打包**：`tauri build` 在 macOS 产出 `app` + `dmg`；分发给他人需签名 + 公证。
+
+### 上游版本与逆向素材
+
+- 数据链路对齐 `hongguo-7.4.3.17.apk`（versionCode 74317，2026-10-24 构建）。
+  2026-10-28 复测：榜单接口 `code=0`；landpage / search 仍返回空 body（需要 X-Argus）。
+- 账号链路单独声明 `7.3.9.32`（`phone_account_device.VERSION_CODE`），
+  服务端按这个版本返回挑战；它和阅读链路版本互相独立，不要一起改。
+- `app/backend/capture/fq_oversea/`（已在 .gitignore）存放从 7.4.3.17 提取的
+  `libmetasec_ml.so` / `libEncryptor.so` / `libc++_shared.so`，
+  是重建 unidbg 签名器时的模拟目标；签名器本体（`sign/unidbg-sign.jar`）仍缺。
+
+
 ## 关键结论
 
 **卡顿根因**（CDP 实测原版）：135 张封面全部 `loading="eager"`，每张 640×914

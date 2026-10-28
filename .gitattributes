@@ -1,0 +1,6 @@
+# vendor 目录里的第三方代码按发布时的原始字节保留：
+# 账号模块对这几个文件做 sha256 完整性校验（见 protocol-integrity.json），
+# 换行符一旦被规范化，校验就失败，账号链路无法启动。
+app/backend/phone-account-protocol/vendor/TTEncrypt.py -text
+app/backend/phone-account-protocol/vendor/XGorgon.py -text
+app/backend/phone-account-protocol/medusa_wire_tables.json -text

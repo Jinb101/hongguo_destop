@@ -1,6 +1,7 @@
 # 依赖与工具链
 node_modules/
 pydeps/
+.venv/
 tools/node/
 tools/rust/
 

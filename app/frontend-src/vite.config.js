@@ -35,7 +35,7 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     emptyOutDir: true,
-    target: 'chrome110',
+    target: ['chrome110', 'safari14'],
     sourcemap: false,
     chunkSizeWarningLimit: 900,
     rollupOptions: {

@@ -130,7 +130,8 @@ const RANK_CELL_ID = '7470092475068071998'
 /**
  * 剧场模式 -> 榜单接口参数。
  * selected_items 是「哪个剧场」，sub_selected_items 是「哪个榜」，
- * 两组 id 来自上游 cell_selector 实测（2026-10-27，7.4.1.32 游客态免签返回 code=0）。
+ * 两组 id 来自上游 cell_selector 实测（2026-10-27，7.4.1.32 游客态免签返回 code=0；
+ * 2026-10-28 用 7.4.3.17 复测同样是 code=0）。
  */
 const THEATERS = {
   short_play: {
@@ -209,19 +210,13 @@ const API_ROUTES = {
   get_category: () => ({ blocked: SIGNATURE_REQUIRED }),
   get_category_options: () => ({ blocked: SIGNATURE_REQUIRED }),
   get_taste_tags: () => ({ blocked: SIGNATURE_REQUIRED }),
-  // 手机号登录：原由厂商 exe 内 Rust 实现，自建壳没有这套能力。
-  phone_account_status: () => ({
-    stub: {
-      authenticated: false,
-      loginAvailable: false,
-      unavailableReason:
-        '红果云端账号需要账号服务签名，自建壳尚未具备；本机档案不受影响，随时可用。',
-    },
-  }),
-  phone_account_send_code: () => ({ blocked: '手机号登录依赖原版 exe 内的 Rust 账号模块，自建壳未实现' }),
-  phone_account_login: () => ({ blocked: '手机号登录依赖原版 exe 内的 Rust 账号模块，自建壳未实现' }),
-  phone_account_continue: () => ({ blocked: '手机号登录依赖原版 exe 内的 Rust 账号模块，自建壳未实现' }),
-  phone_account_logout: () => ({ blocked: '手机号登录依赖原版 exe 内的 Rust 账号模块，自建壳未实现' }),
+  // 手机号登录：发码/校验/会话都是账号服务的 HTTP 调用，
+  // 签名（X-Gorgon / X-Helios / X-Ladon / Medusa）由本机 Python 账号宿主完成。
+  phone_account_status: () => ({ account: { action: 'status' } }),
+  phone_account_send_code: (a) => ({ account: { action: 'send', phone: a?.phone } }),
+  phone_account_login: (a) => ({ account: { action: 'login', phone: a?.phone, code: a?.code } }),
+  phone_account_continue: () => ({ account: { action: 'continue' } }),
+  phone_account_logout: () => ({ account: { action: 'logout' } }),
   list_favorites: () => ({ local: 'favorites' }),
   list_history: () => ({ local: 'history' }),
   get_update_status: () => ({ stub: { has_update: false } }),
@@ -323,6 +318,10 @@ async function dispatch(command, args) {
   if (resolved.stub !== undefined) return resolved.stub
   if (resolved.local) return kv.readList(resolved.local)
   if (resolved.blocked) throw new Error(resolved.blocked)
+  if (resolved.account) {
+    if (!isTauri()) throw new Error('账号登录只在桌面端可用')
+    return tauriInvoke('phone_account_call', resolved.account)
+  }
   return requestUpstream(resolved)
 }
 

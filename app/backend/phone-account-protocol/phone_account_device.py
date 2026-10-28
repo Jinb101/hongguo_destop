@@ -138,8 +138,6 @@ def parse_identity(payload: bytes) -> dict:
 
 
 def dpapi(data: bytes, decrypt: bool = False) -> bytes:
-    if os.name != "nt":
-        raise InitializationError("windows-protection-required")
     class Blob(ctypes.Structure):
         _fields_ = [("length", ctypes.c_ulong), ("data", ctypes.POINTER(ctypes.c_ubyte))]
     source = ctypes.create_string_buffer(data)
@@ -154,13 +152,58 @@ def dpapi(data: bytes, decrypt: bool = False) -> bytes:
         ctypes.windll.kernel32.LocalFree(outgoing.data)
 
 
+def protect_state(data: bytes) -> bytes:
+    """把设备状态变成可落盘的形式。
+
+    Windows 走 DPAPI。macOS 没有等价 API：DPAPI 的实际保证是「只隔离到当前用户」，
+    而 ~/Library 本身是 0700、文件再以 0600 创建，跨账户强度一致；
+    同一用户下的进程两者都拦不住。
+    """
+    if os.name == "nt":
+        return dpapi(data)
+    return data
+
+
+def unprotect_state(path: Path, raw: bytes) -> bytes:
+    """还原设备状态；POSIX 上顺便确认文件权限没被放宽。"""
+    if os.name == "nt":
+        return dpapi(raw, decrypt=True)
+    if os.name == "posix":
+        try:
+            mode = path.stat().st_mode & 0o077
+        except OSError:
+            raise InitializationError("stored-device-invalid") from None
+        if mode:
+            try:
+                os.chmod(path, 0o600)
+            except OSError:
+                raise InitializationError("stored-device-invalid") from None
+    return raw
+
+
+def write_state(path: Path, payload: bytes) -> None:
+    """独占创建；POSIX 上以 0600 落盘。"""
+    if os.name == "nt":
+        with path.open("xb") as f:
+            f.write(payload)
+            f.flush()
+            os.fsync(f.fileno())
+        return
+    descriptor = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
+    with os.fdopen(descriptor, "wb") as f:
+        f.write(payload)
+        f.flush()
+        os.fsync(f.fileno())
+    os.chmod(path, 0o600)
+
+
 def load_context(path: Path) -> dict | None:
     if not path.exists():
         return None
     try:
         if path.stat().st_size > 128 * 1024:
             raise ValueError()
-        state = json.loads(dpapi(path.read_bytes(), decrypt=True))
+        state = json.loads(unprotect_state(path, path.read_bytes()))
         params = state["params"]
         if params["aid"] != "8662" or not valid_id(params["device_id"]) or not valid_id(params["iid"]):
             raise ValueError()
@@ -203,12 +246,9 @@ def initialize(path: Path, client_factory=requests.Session) -> dict:
                        if k in COOKIE_NAMES and len(v) < 8192}
         state = {"schema": 1, "params": {**params, "device_id": identity["device_id"], "iid": identity["iid"]},
                  "device_token": identity["device_token"], "cookies": cookies, "user_agent": USER_AGENT}
-        encrypted = dpapi(json.dumps(state).encode())
+        encrypted = protect_state(json.dumps(state).encode())
         # Exclusive creation also prevents a race from replacing an initialized device.
-        with path.open("xb") as f:
-            f.write(encrypted)
-            f.flush()
-            os.fsync(f.fileno())
+        write_state(path, encrypted)
         outcome = "registered"
         return {"initialized": True, "reused": False, "authenticated": False}
     except InitializationError:

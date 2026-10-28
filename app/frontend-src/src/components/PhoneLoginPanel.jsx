@@ -35,7 +35,17 @@ export default function PhoneLoginPanel() {
   const [busy, setBusy] = useState(null) // 正在执行的动作名
   const [error, setError] = useState('')
   const [countdown, setCountdown] = useState(0)
+  const [verifyDeadline, setVerifyDeadline] = useState(0)
   const aliveRef = useRef(true)
+
+  /** 记录状态；上游给的是「还剩多少秒」，这里换算成绝对截止时间。 */
+  const applyStatus = useCallback((res) => {
+    setStatus(res ?? {})
+    const expiresIn = Number(res?.verification?.expiresIn)
+    if (Number.isFinite(expiresIn) && expiresIn > 0) {
+      setVerifyDeadline(Date.now() + expiresIn * 1000)
+    }
+  }, [])
 
   useEffect(() => {
     aliveRef.current = true
@@ -50,11 +60,13 @@ export default function PhoneLoginPanel() {
     try {
       const res = await call('phone_account_status', {})
       if (!aliveRef.current) return
-      setStatus(res ?? {})
+      applyStatus(res)
       // 实测返回：{ authenticated, loginAvailable, unavailableReason,
       //             displayName, retryAfter, lastSync, phase, verification }
       if (res?.authenticated) setPhase('authed')
       else if (res?.loginAvailable === false) setPhase('unavailable')
+      // 切页/重挂载时还没走完的手机验证要接回来，不能把人打回手机号表单
+      else if (res?.verification) setPhase('verify')
       else setPhase('login')
     } catch (e) {
       if (!aliveRef.current) return
@@ -62,7 +74,7 @@ export default function PhoneLoginPanel() {
       setStatus({ unavailableReason: e.message ?? '账号服务暂不可用，请稍后重新打开此页' })
       setPhase('unavailable')
     }
-  }, [])
+  }, [applyStatus])
 
   // 倒计时
   useEffect(() => {
@@ -82,7 +94,7 @@ export default function PhoneLoginPanel() {
     try {
       const res = await callOnce('phone_account_send_code', { phone })
       if (!aliveRef.current) return
-      setStatus(res ?? {})
+      applyStatus(res)
       const wait = Number(res?.retryAfter ?? 60)
       setCountdown(wait)
       setCode('')
@@ -92,7 +104,7 @@ export default function PhoneLoginPanel() {
     } finally {
       if (aliveRef.current) setBusy(null)
     }
-  }, [phone, toast])
+  }, [phone, toast, applyStatus])
 
   /** 提交手机号 + 验证码登录。 */
   const login = useCallback(async () => {
@@ -105,7 +117,7 @@ export default function PhoneLoginPanel() {
     try {
       const res = await callOnce('phone_account_login', { phone, code })
       if (!aliveRef.current) return
-      setStatus(res ?? {})
+      applyStatus(res)
       if (res?.authenticated) {
         setPhase('authed')
         setCode('')
@@ -121,7 +133,7 @@ export default function PhoneLoginPanel() {
     } finally {
       if (aliveRef.current) setBusy(null)
     }
-  }, [phone, code, toast])
+  }, [phone, code, toast, applyStatus])
 
   /** 确认已发送验证短信，继续验证。 */
   const continueVerify = useCallback(async () => {
@@ -130,7 +142,7 @@ export default function PhoneLoginPanel() {
     try {
       const res = await callOnce('phone_account_continue', {})
       if (!aliveRef.current) return
-      setStatus(res ?? {})
+      applyStatus(res)
       if (res?.authenticated) {
         setPhase('authed')
         toast.push('登录成功，可以读取云片单')
@@ -142,7 +154,7 @@ export default function PhoneLoginPanel() {
     } finally {
       if (aliveRef.current) setBusy(null)
     }
-  }, [toast])
+  }, [toast, applyStatus])
 
   /** 取消验证 / 退出账号。 */
   const logout = useCallback(async () => {
@@ -151,7 +163,7 @@ export default function PhoneLoginPanel() {
     try {
       const res = await callOnce('phone_account_logout', {})
       if (!aliveRef.current) return
-      setStatus(res ?? {})
+      applyStatus(res)
       setPhase(res?.authenticated ? 'authed' : 'login')
       setPhone('')
       setCode('')
@@ -161,7 +173,7 @@ export default function PhoneLoginPanel() {
     } finally {
       if (aliveRef.current) setBusy(null)
     }
-  }, [toast])
+  }, [toast, applyStatus])
 
   /* ---------------- 渲染 ---------------- */
 
@@ -211,7 +223,9 @@ export default function PhoneLoginPanel() {
 
   if (phase === 'verify') {
     const v = status?.verification ?? {}
-    const expired = v.expiresIn ? Date.now() > v.expiresAt : false
+    const minutesLeft = verifyDeadline
+      ? Math.max(0, Math.ceil((verifyDeadline - Date.now()) / 60000))
+      : 0
     return (
       <div className="phone-login">
         <h3 className="phone-verify-title">完成手机验证</h3>
@@ -226,13 +240,15 @@ export default function PhoneLoginPanel() {
           <dd>{v.content ?? '—'}</dd>
         </dl>
         <p className="phone-note">
-          {expired ? '此次验证已过期，请取消后重新登录。' : '请尽快在有效期内完成，短信费用按运营商标准收取。'}
+          {minutesLeft > 0
+            ? `请在约 ${minutesLeft} 分钟内完成；短信费用按运营商标准收取。`
+            : '短信费用按运营商标准收取；若已过期请取消后重新登录。'}
         </p>
         <div className="phone-actions">
           <button
             type="button"
             className="btn btn-primary"
-            disabled={busy === 'continue' || expired}
+            disabled={busy === 'continue'}
             onClick={continueVerify}
           >
             {busy === 'continue' ? '确认中…' : '我已发送，继续验证'}
@@ -246,6 +262,11 @@ export default function PhoneLoginPanel() {
             取消验证
           </button>
         </div>
+        {error ? (
+          <p className="phone-error" role="alert">
+            {error}
+          </p>
+        ) : null}
       </div>
     )
   }

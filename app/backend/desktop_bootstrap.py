@@ -1,7 +1,8 @@
-"""Managed Windows entry point. No UI, persisted keys, or phone fallback."""
+"""Managed desktop entry point. No UI, persisted keys, or phone fallback."""
 import os
 from pathlib import Path
 import secrets
+import shutil
 import socket
 import subprocess
 import sys
@@ -49,6 +50,24 @@ def launcher_path(value):
     if text.startswith("\\\\?\\") and len(text) > 6 and text[5:7] == ":\\":
         return text[4:]
     return text
+
+
+def java_launcher(root):
+    if os.name == "nt":
+        return str(root / "jre/bin/java.exe")
+    candidates = [root / "jre" / "bin" / "java"]
+    if sys.platform == "darwin":
+        candidates.insert(0, root / "jre" / "Contents" / "Home" / "bin" / "java")
+    java_home = os.environ.get("JAVA_HOME")
+    if java_home and Path(java_home).is_absolute():
+        candidates.append(Path(java_home) / "bin" / "java")
+    for candidate in candidates:
+        if candidate.is_file() and os.access(candidate, os.X_OK):
+            return str(candidate)
+    found = shutil.which("java")
+    if found:
+        return found
+    raise FileNotFoundError("No Java runtime found for the signing service")
 
 
 def api_socket():
@@ -120,7 +139,47 @@ def parse_listener_table(raw, pid):
     return ports[0] if ports else None
 
 
+def posix_owned_listener_port(pid):
+    probe_result("query_failed")
+    if type(pid) is not int or pid <= 0:
+        raise RuntimeError("Invalid signer PID")
+    try:
+        result = subprocess.run(
+            ["/usr/sbin/lsof" if sys.platform == "darwin" else "lsof",
+             "-nP", "-a", "-p", str(pid), "-iTCP", "-sTCP:LISTEN", "-Fptn"],
+            capture_output=True, text=True, timeout=10, check=False)
+    except (OSError, subprocess.SubprocessError):
+        raise OSError("Cannot inspect owned signer listener") from None
+    if result.stderr or result.returncode not in (0, 1):
+        raise OSError("Cannot inspect owned signer listener")
+    if result.returncode == 1:
+        if result.stdout:
+            raise OSError("Cannot inspect owned signer listener")
+        probe_result("no_owned_rows")
+        return None
+    probe_result("invalid_table")
+    header = f"p{pid}\n"
+    records = result.stdout[len(header):]
+    pattern = r"f[0-9]+\nt(IPv[46])\nn([^\n]+)\n"
+    if not result.stdout.startswith(header) or not re.fullmatch(f"(?:{pattern})+", records):
+        raise RuntimeError("Invalid owned signer listener table")
+    ports = []
+    for family, endpoint in re.findall(pattern, records):
+        match = re.fullmatch(r"127\.0\.0\.1:([1-9][0-9]{0,4})", endpoint)
+        if family != "IPv4" or not match or int(match[1]) > 65535:
+            probe_result("unexpected_listener")
+            raise RuntimeError("Owned signer has an unexpected listener")
+        ports.append(int(match[1]))
+    if len(ports) > 1:
+        probe_result("ambiguous_listener")
+        raise RuntimeError("Owned signer endpoint is ambiguous")
+    probe_result("listener_found")
+    return ports[0]
+
+
 def owned_listener_port(pid, query=None):
+    if query is None and os.name != "nt":
+        return posix_owned_listener_port(pid)
     probe_result("query_failed")
     if query is None:
         # System32 lookup prevents a current-directory DLL from being loaded.
@@ -249,7 +308,7 @@ def main():
         # The signer owns its OS-assigned port continuously from bind to exit.
         stage("signer_spawn")
         signer = subprocess.Popen(
-            [str(root / "jre/bin/java.exe"), "-Djava.net.preferIPv4Stack=true", "--add-opens", "java.base/java.lang=ALL-UNNAMED",
+            [java_launcher(root), "-Djava.net.preferIPv4Stack=true", "--add-opens", "java.base/java.lang=ALL-UNNAMED",
              "-Xmx512m", "-XX:+ExitOnOutOfMemoryError", "-cp", "unidbg-sign.jar",
              "com.hongguo.sign.FqTrace", "serve", "0"],
             cwd=root / "sign", stdin=subprocess.DEVNULL,

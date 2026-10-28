@@ -6,10 +6,10 @@ use tauri::Manager;
 
 const DEFAULT_UPSTREAM_HOST: &str = "api5-normal-sinfonlinea.fqnovel.com";
 
-/// 游客态设备参数，与 apk/hongguo-7.4.1.32.apk 对齐。
+/// 游客态设备参数，与 hongguo-7.4.3.17.apk（versionCode 74317）对齐。
 ///
 /// 实测（tools/upstream_probe.mjs）：这套参数免签即可拿到榜单接口 code=0；
-/// 换成旧的 7.2.2.32 或补上 device_id/iid 都不改变结果 —— 决定能不能拿到数据的是
+/// 换成旧的 7.4.1.32 / 7.2.2.32 都不改变结果 —— 决定能不能拿到数据的是
 /// "该接口是否校验签名"，不是版本号。
 ///
 /// device_id / iid 由本机首次启动生成并持久化（见 AppState::new），
@@ -22,13 +22,13 @@ fn guest_query(device_id: &str, iid: &str) -> Vec<(&'static str, String)> {
     vec![
         ("aid", "8662".to_string()),
         ("app_name", "novelread".to_string()),
-        ("version_code", "74132".to_string()),
-        ("version_name", "7.4.1.32".to_string()),
+        ("version_code", "74317".to_string()),
+        ("version_name", "7.4.3.17".to_string()),
         ("channel", "audit".to_string()),
         ("device_platform", "android".to_string()),
         ("device_type", "audit-windows".to_string()),
         ("os_version", "12".to_string()),
-        ("update_version_code", "74132".to_string()),
+        ("update_version_code", "74317".to_string()),
         ("device_id", device_id.to_string()),
         ("iid", iid.to_string()),
         ("install_id", iid.to_string()),
@@ -42,6 +42,7 @@ pub struct AppState {
     pub data_dir: PathBuf,
     pub version: String,
     pub store: Mutex<Value>,
+    pub account: std::sync::Arc<crate::account::AccountHost>,
     /// 本机设备身份：首次启动生成，之后一直复用（游客态也能"登录状态"稳定）。
     pub device_id: String,
     pub iid: String,
@@ -94,6 +95,7 @@ impl AppState {
             version: app.package_info().version.to_string(),
             data_dir,
             store: Mutex::new(store),
+            account: std::sync::Arc::new(crate::account::AccountHost::new(app)),
             device_id,
             iid,
         }

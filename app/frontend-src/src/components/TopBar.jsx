@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import WindowControls from './WindowControls.jsx'
 import { avatarHue, useAccount } from '../lib/account.js'
 import { THEMES, useTheme } from '../lib/theme.js'
+import { isMacPlatform } from '../lib/window-prefs.js'
 
 /**
  * 顶栏（macOS 布局，可自定义）
@@ -95,7 +96,11 @@ export default function TopBar({ title, mode, modes, onModeChange, onSearch, onO
   const nickname = profile?.nickname ?? '本机观众'
 
   return (
-    <header className="topbar" data-tauri-drag-region="deep" data-window-drag>
+    <header
+      className={`topbar ${isMacPlatform() ? 'is-macos' : ''}`}
+      data-tauri-drag-region="deep"
+      data-window-drag
+    >
       <div className="topbar-left">
         <WindowControls />
         <span className="topbar-brand">

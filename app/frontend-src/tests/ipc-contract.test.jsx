@@ -47,8 +47,16 @@ describe('命令路由表', () => {
     }
   })
 
-  it('手机号登录明确不可用，不再伪装成后端接口', () => {
-    expect(resolveRoute('phone_account_send_code', {}).blocked).toMatch(/自建壳未实现/)
+  it('手机号登录走本机账号宿主，参数按动作透传', () => {
+    expect(resolveRoute('phone_account_status', {}).account).toEqual({ action: 'status' })
+    expect(resolveRoute('phone_account_send_code', { phone: '13800138000' }).account).toEqual({
+      action: 'send',
+      phone: '13800138000',
+    })
+    expect(
+      resolveRoute('phone_account_login', { phone: '13800138000', code: '123456' }).account,
+    ).toEqual({ action: 'login', phone: '13800138000', code: '123456' })
+    expect(resolveRoute('phone_account_logout', {}).account).toEqual({ action: 'logout' })
   })
 
   it('收藏与历史是本机状态，不出网', () => {

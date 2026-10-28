@@ -1,0 +1,31 @@
+{
+  "app": {
+    "windows": [
+      {
+        "title": "红果免费短剧",
+        "width": 1280,
+        "height": 820,
+        "minWidth": 1040,
+        "minHeight": 660,
+        "center": true,
+        "backgroundColor": "#0d0d12",
+        "decorations": true,
+        "titleBarStyle": "Overlay",
+        "hiddenTitle": true,
+        "trafficLightPosition": { "x": 18, "y": 20 }
+      }
+    ]
+  },
+  "bundle": {
+    "targets": ["app", "dmg"],
+    "icon": [
+      "icons/icon.icns",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.png"
+    ],
+    "macOS": {
+      "minimumSystemVersion": "11.0"
+    }
+  }
+}

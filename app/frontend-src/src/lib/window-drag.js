@@ -1,4 +1,5 @@
 import { useCallback, useEffect } from 'react'
+import { isMacPlatform } from './window-prefs.js'
 
 /**
  * 窗口拖动
@@ -32,6 +33,9 @@ export function inTauri() {
 
 export function useWindowDrag() {
   const onDown = useCallback((e) => {
+    // macOS 用原生装饰，拖动由系统标题栏负责；自己再发 start_dragging
+    // 会与系统行为打架（并且无边框时代的 preventDefault 会吃掉原生拖动）。
+    if (isMacPlatform()) return
     if (e.button !== 0 && e.button !== undefined) return
 
     const target = e.target

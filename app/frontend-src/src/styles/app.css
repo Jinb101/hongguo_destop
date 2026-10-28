@@ -301,6 +301,11 @@ select {
   min-width: 0;
 }
 
+/* macOS 原生交通灯浮在窗口左上角，品牌区要让出位置 */
+.topbar.is-macos {
+  padding-left: 92px;
+}
+
 .topbar-brand {
   display: flex;
   align-items: center;

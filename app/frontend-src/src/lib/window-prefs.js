@@ -1,6 +1,17 @@
 import { isTauri } from './ipc.js'
 
 /**
+ * 宿主平台判定。
+ *
+ * macOS 下窗口用原生装饰（titleBarStyle: Overlay），交通灯和拖动都由系统提供，
+ * 前端不要再画一套按钮；Windows 侧仍是无边框窗口，按钮必须自己渲染。
+ */
+export function isMacPlatform() {
+  if (typeof navigator === 'undefined') return false
+  return /Macintosh|Mac OS X/.test(navigator.userAgent) || navigator.platform === 'MacIntel'
+}
+
+/**
  * 窗口级偏好（目前只有「置顶」）。
  *
  * 放在 localStorage 里是因为它必须在第一帧就可用；
